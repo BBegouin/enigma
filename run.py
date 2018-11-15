@@ -18,8 +18,8 @@ def process_choix(pMenu, pMachine):
     elif choix == 3:
         exit()
 
-enigma_menu = Menu
-my_machine = EnigmaMachine
+enigma_menu = Menu()
+my_machine = EnigmaMachine()
 
 while True:
     choix = enigma_menu.show()
