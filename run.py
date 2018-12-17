@@ -2,28 +2,25 @@ __author__ = 'Bertrand'
 from menu import Menu
 from enigma_machine_mono import EnigmaMachine
 
-
-def process_choix(pMenu, pMachine):
-    if choix == 0:
-            msg = pMenu.get_initial_pos()
-            res = pMachine.setup(msg)
-    if choix == 1:
-            msg = pMenu.get_message()
-            res = pMachine.code(msg)
-            pMenu.display_result_message(res)
-    elif choix == 2:
-            msg = pMenu.get_message()
-            msg = pMachine.decode(msg)
-            pMenu.display_result_message(msg)
-    elif choix == 3:
-        exit()
-
 enigma_menu = Menu()
 my_machine = EnigmaMachine()
 
+
+def process_choix(choix):
+    if choix == 1:
+        str = enigma_menu.get_message()
+        encoded = my_machine.code(str)
+        enigma_menu.display_result_message(encoded)
+    elif choix == 2:
+        str = enigma_menu.get_message()
+        decoded = my_machine.decode(str)
+        enigma_menu.display_result_message(decoded)
+    elif choix == 3:
+        exit()
+
 while True:
     choix = enigma_menu.show()
-    process_choix(enigma_menu,my_machine)
+    process_choix(choix)
 
 
 
